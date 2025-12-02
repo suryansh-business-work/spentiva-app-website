@@ -23,8 +23,8 @@ const plans = [
   },
   {
     name: "Pro",
-    priceMonthly: { usd: 9.99, inr: 799, eur: 8.99 },
-    priceYearly: { usd: 99, inr: 7990, eur: 89 },
+    priceMonthly: { usd: 9.99, inr: 99, eur: 8.99 },
+    priceYearly: { usd: 99, inr: 999, eur: 89 },
     description: "For power users who want full control.",
     features: [
       { text: "Unlimited Expense Tracking", included: true },
@@ -37,23 +37,6 @@ const plans = [
     cta: "Start Free Trial",
     ctaLink: "https://app.spentiva.com/signup?plan=pro",
     popular: true,
-  },
-  {
-    name: "Business",
-    priceMonthly: { usd: 29.99, inr: 2499, eur: 26.99 },
-    priceYearly: { usd: 299, inr: 24990, eur: 269 },
-    description: "Ideal for small businesses and teams.",
-    features: [
-      { text: "Everything in Pro", included: true },
-      { text: "Team Management", included: true },
-      { text: "Expense Approval Flows", included: true },
-      { text: "Custom Categories", included: true },
-      { text: "API Access", included: true },
-      { text: "Dedicated Account Manager", included: true },
-    ],
-    cta: "Contact Sales",
-    ctaLink: "/contact",
-    popular: false,
   },
 ];
 
@@ -119,7 +102,7 @@ const faqs = [
           >
             <button
               id="monthly-btn"
-              class="px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 bg-primary-400 text-white"
+              class="cursor-pointer px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 bg-primary-400 text-white"
               aria-pressed="true"
               aria-label="Select monthly billing"
             >
@@ -127,13 +110,13 @@ const faqs = [
             </button>
             <button
               id="yearly-btn"
-              class="px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 text-text-secondary"
+              class="cursor-pointer px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 text-text-secondary"
               aria-pressed="false"
               aria-label="Select yearly billing"
             >
               Yearly
               <span
-                class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full"
+                class="cursor-pointer ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full"
                 >Save 17%</span
               >
             </button>
@@ -166,7 +149,7 @@ const faqs = [
       class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
       id="pricing-container"
     >
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
         {
           plans.map((plan, index) => (
             <div

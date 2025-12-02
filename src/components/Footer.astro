@@ -52,64 +52,41 @@ const socialLinks = [
 ];
 ---
 
-<footer
-  class="bg-white border-t border-border-light pt-16 pb-8"
-  role="contentinfo"
->
+<footer class="bg-white border-t border-gray-100 pt-16 pb-8" role="contentinfo">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
     <Newsletter />
 
     <!-- Footer Links -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16 pt-8"
+    >
       <!-- Brand Section -->
-      <div class="lg:col-span-2">
-        <div class="flex items-center space-x-2 mb-6">
-          <div
-            class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"
-          >
+      <div class="lg:col-span-4">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-10 h-10 flex items-center justify-center">
             <img
               src="/logo.svg"
               alt="Spentiva Logo"
-              class="w-full h-full filter drop-shadow-sm"
-              width="48"
-              height="48"
+              class="w-full h-full"
+              width="40"
+              height="40"
             />
           </div>
           <div class="flex flex-col">
             <span
-              class="font-bold text-lg md:text-xl text-text-primary tracking-tight"
+              class="font-bold text-xl text-gray-900 tracking-tight leading-none"
               >Spentiva</span
             >
             <span
-              class="text-[9px] md:text-[10px] tracking-wider text-text-secondary font-medium uppercase"
+              class="text-[10px] tracking-widest text-gray-500 font-medium uppercase leading-none mt-1"
               >By Exyconn</span
             >
           </div>
         </div>
-        <p class="text-text-secondary mb-8 max-w-sm leading-relaxed">
+        <p class="text-gray-600 mb-8 max-w-sm leading-relaxed text-sm">
           AI-powered expense tracking made simple. Track, analyze, and optimize
           your spending with intelligent insights.
         </p>
-
-        <!-- Auth Buttons -->
-        <div class="flex flex-col sm:flex-row gap-3 mb-8">
-          <a
-            href="https://app.spentiva.com/login"
-            class="cursor-pointer inline-flex items-center justify-center px-6 py-3 border-2 border-primary-400 text-primary-400 font-semibold rounded-lg hover:bg-primary-50 transition-all duration-300 text-sm hover:scale-105"
-            aria-label="Log in to your account"
-          >
-            <i class="fas fa-sign-in-alt mr-2" aria-hidden="true"></i>
-            Log in
-          </a>
-          <a
-            href="https://app.spentiva.com/signup"
-            class="cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-primary-400 text-white font-semibold rounded-lg hover:bg-primary-500 transition-all duration-300 shadow-lg shadow-primary-400/25 text-sm hover:scale-105"
-            aria-label="Sign up for free account"
-          >
-            <i class="fas fa-rocket mr-2" aria-hidden="true"></i>
-            Sign up Free
-          </a>
-        </div>
 
         <!-- Social Links -->
         <div class="flex space-x-4">
@@ -117,7 +94,7 @@ const socialLinks = [
             socialLinks.map((social) => (
               <a
                 href={social.href}
-                class="cursor-pointer w-10 h-10 bg-background-surfaceAlt rounded-lg flex items-center justify-center text-text-secondary hover:bg-primary-400 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                class="cursor-pointer w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-gray-500 hover:bg-primary-600 hover:text-white transition-all duration-300 hover:-translate-y-1"
                 aria-label={social.label}
               >
                 <i class={`${social.icon} text-lg`} aria-hidden="true" />
@@ -127,16 +104,19 @@ const socialLinks = [
         </div>
       </div>
 
+      <!-- Spacer -->
+      <div class="hidden lg:block lg:col-span-1"></div>
+
       <!-- Product Links -->
-      <div>
-        <h3 class="font-bold text-text-primary mb-6">Product</h3>
+      <div class="lg:col-span-2">
+        <h3 class="font-bold text-gray-900 mb-6">Product</h3>
         <ul class="space-y-4" role="list">
           {
             footerLinks.product.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  class="cursor-pointer text-gray-600 hover:text-primary-600 transition-colors duration-200 text-sm font-medium inline-block"
                   aria-label={link.name}
                 >
                   {link.name}
@@ -148,15 +128,15 @@ const socialLinks = [
       </div>
 
       <!-- Resources Links -->
-      <div>
-        <h3 class="font-bold text-text-primary mb-6">Resources</h3>
+      <div class="lg:col-span-2">
+        <h3 class="font-bold text-gray-900 mb-6">Resources</h3>
         <ul class="space-y-4" role="list">
           {
             footerLinks.resources.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  class="cursor-pointer text-gray-600 hover:text-primary-600 transition-colors duration-200 text-sm font-medium inline-block"
                   aria-label={link.name}
                 >
                   {link.name}
@@ -168,15 +148,15 @@ const socialLinks = [
       </div>
 
       <!-- Legal Links -->
-      <div>
-        <h3 class="font-bold text-text-primary mb-6">Legal</h3>
+      <div class="lg:col-span-3">
+        <h3 class="font-bold text-gray-900 mb-6">Legal</h3>
         <ul class="space-y-4" role="list">
           {
             footerLinks.legal.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  class="cursor-pointer text-gray-600 hover:text-primary-600 transition-colors duration-200 text-sm font-medium inline-block"
                   aria-label={link.name}
                 >
                   {link.name}
@@ -189,30 +169,30 @@ const socialLinks = [
     </div>
 
     <!-- Bottom Bar -->
-    <div class="pt-8 border-t border-border-light">
+    <div class="pt-8 border-t border-gray-100">
       <div
         class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
       >
-        <p class="text-sm text-text-placeholder">
+        <p class="text-sm text-gray-500">
           © {currentYear} Spentiva by Exyconn. All rights reserved.
         </p>
-        <div class="flex items-center space-x-8 text-sm text-text-secondary">
+        <div class="flex items-center space-x-6 text-sm text-gray-500">
           <a
             href="/privacy-policy"
-            class="cursor-pointer hover:text-primary-400 transition-colors"
+            class="cursor-pointer hover:text-primary-600 transition-colors"
             aria-label="Privacy Policy">Privacy</a
           >
           <a
             href="/terms-and-conditions"
-            class="cursor-pointer hover:text-primary-400 transition-colors"
+            class="cursor-pointer hover:text-primary-600 transition-colors"
             aria-label="Terms and Conditions">Terms</a
-          >Data Policy
+          >
+          <a
+            href="/cookie-policy"
+            class="cursor-pointer hover:text-primary-600 transition-colors"
+            aria-label="Cookie Policy">Cookies</a
+          >
         </div>
-        <a
-          href="/cookie-policy"
-          class="cursor-pointer hover:text-primary-400 transition-colors"
-          aria-label="Cookie Policy">Cookies</a
-        >
       </div>
     </div>
   </div>
