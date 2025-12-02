@@ -99,16 +99,16 @@ const faqs = [
   
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white">
-    <div class="container-custom section-padding">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
       <div class="max-w-4xl mx-auto text-center observe-animation">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
           Simple, Transparent Pricing
         </h1>
-        <p class="text-xl text-blue-100 mb-8">
+        <p class="text-xl text-primary-50 mb-8">
           Choose the plan that's right for you. Start free, upgrade anytime.
         </p>
         <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3">
-          <i class="fas fa-check-circle text-green-300 mr-2"></i>
+          <i class="fas fa-check-circle text-success mr-2"></i>
           <span>14-day free trial • No credit card required • Cancel anytime</span>
         </div>
       </div>
@@ -116,14 +116,14 @@ const faqs = [
   </section>
 
   <!-- Pricing Cards Section -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-custom">
+  <section class="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {pricingPlans.map((plan, index) => (
-          <div class={`relative card observe-animation ${plan.popular ? 'ring-4 ring-blue-600 transform lg:scale-105' : ''}`} style={`animation-delay: ${index * 0.1}s`}>
+          <div class={`relative card observe-animation ${plan.popular ? 'ring-4 ring-primary-400 transform lg:scale-105' : ''}`} style={`animation-delay: ${index * 0.1}s`}>
             {plan.popular && (
               <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <span class="bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
                   <i class="fas fa-star mr-1"></i>
                   Most Popular
                 </span>
@@ -164,7 +164,7 @@ const faqs = [
           <i class="fas fa-building mr-2"></i>
           Need a custom enterprise solution?
         </p>
-        <a href="/contact" class="text-blue-600 font-semibold hover:text-blue-800">
+        <a href="/contact" class="text-primary-400 font-semibold hover:text-primary-600">
           Contact our sales team <i class="fas fa-arrow-right ml-1"></i>
         </a>
       </div>
@@ -172,11 +172,11 @@ const faqs = [
   </section>
 
   <!-- Comparison Table Section -->
-  <section class="section-padding bg-white">
-    <div class="container-custom">
+  <section class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">Compare All Features</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Compare All Features</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           See what's included in each plan
         </p>
       </div>
@@ -187,7 +187,7 @@ const faqs = [
             <tr class="border-b-2 border-gray-200">
               <th class="text-left py-4 px-6 font-bold text-gray-900">Feature</th>
               <th class="text-center py-4 px-6 font-bold text-gray-900">Free</th>
-              <th class="text-center py-4 px-6 font-bold text-gray-900 bg-blue-50">Pro</th>
+              <th class="text-center py-4 px-6 font-bold text-gray-900 bg-primary-50">Pro</th>
               <th class="text-center py-4 px-6 font-bold text-gray-900">Business</th>
             </tr>
           </thead>
@@ -195,37 +195,37 @@ const faqs = [
             <tr>
               <td class="py-4 px-6 text-gray-700">Number of Trackers</td>
               <td class="text-center py-4 px-6">1</td>
-              <td class="text-center py-4 px-6 bg-blue-50">5</td>
+              <td class="text-center py-4 px-6 bg-primary-50">5</td>
               <td class="text-center py-4 px-6">Unlimited</td>
             </tr>
             <tr>
               <td class="py-4 px-6 text-gray-700">Expenses per Month</td>
               <td class="text-center py-4 px-6">100</td>
-              <td class="text-center py-4 px-6 bg-blue-50">Unlimited</td>
+              <td class="text-center py-4 px-6 bg-primary-50">Unlimited</td>
               <td class="text-center py-4 px-6">Unlimited</td>
             </tr>
             <tr>
               <td class="py-4 px-6 text-gray-700">AI Categorization</td>
               <td class="text-center py-4 px-6"><i class="fas fa-check text-green-500"></i></td>
-              <td class="text-center py-4 px-6 bg-blue-50"><i class="fas fa-check text-green-500"></i></td>
+              <td class="text-center py-4 px-6 bg-primary-50"><i class="fas fa-check text-green-500"></i></td>
               <td class="text-center py-4 px-6"><i class="fas fa-check text-green-500"></i></td>
             </tr>
             <tr>
               <td class="py-4 px-6 text-gray-700">Advanced Analytics</td>
               <td class="text-center py-4 px-6"><i class="fas fa-times text-gray-300"></i></td>
-              <td class="text-center py-4 px-6 bg-blue-50"><i class="fas fa-check text-green-500"></i></td>
+              <td class="text-center py-4 px-6 bg-primary-50"><i class="fas fa-check text-green-500"></i></td>
               <td class="text-center py-4 px-6"><i class="fas fa-check text-green-500"></i></td>
             </tr>
             <tr>
               <td class="py-4 px-6 text-gray-700">Team Collaboration</td>
               <td class="text-center py-4 px-6"><i class="fas fa-times text-gray-300"></i></td>
-              <td class="text-center py-4 px-6 bg-blue-50"><i class="fas fa-times text-gray-300"></i></td>
+              <td class="text-center py-4 px-6 bg-primary-50"><i class="fas fa-times text-gray-300"></i></td>
               <td class="text-center py-4 px-6"><i class="fas fa-check text-green-500"></i></td>
             </tr>
             <tr>
               <td class="py-4 px-6 text-gray-700">Priority Support</td>
               <td class="text-center py-4 px-6"><i class="fas fa-times text-gray-300"></i></td>
-              <td class="text-center py-4 px-6 bg-blue-50"><i class="fas fa-check text-green-500"></i></td>
+              <td class="text-center py-4 px-6 bg-primary-50"><i class="fas fa-check text-green-500"></i></td>
               <td class="text-center py-4 px-6"><i class="fas fa-check text-green-500"></i></td>
             </tr>
           </tbody>
@@ -235,11 +235,11 @@ const faqs = [
   </section>
 
   <!-- FAQ Section -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-custom">
+  <section class="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">Pricing FAQs</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Pricing FAQs</h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Common questions about our pricing plans
         </p>
       </div>
@@ -247,7 +247,7 @@ const faqs = [
         {faqs.map((faq, index) => (
           <div class="bg-white rounded-xl shadow-md p-6 observe-animation" style={`animation-delay: ${index * 0.05}s`}>
             <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-start">
-              <i class="fas fa-question-circle text-blue-600 mr-3 mt-1"></i>
+              <i class="fas fa-question-circle text-primary-400 mr-3 mt-1"></i>
               {faq.question}
             </h3>
             <p class="text-gray-600 ml-8">{faq.answer}</p>
@@ -258,15 +258,15 @@ const faqs = [
   </section>
 
   <!-- CTA Section -->
-  <section class="section-padding bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-    <div class="container-custom text-center observe-animation">
+  <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center observe-animation">
       <h2 class="text-4xl md:text-5xl font-bold mb-6">
         Ready to Get Started?
       </h2>
-      <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+      <p class="text-xl mb-8 text-primary-50 max-w-2xl mx-auto">
         Join thousands of users managing their expenses smarter with Spentiva.
       </p>
-      <a href="https://app.spentiva.com/signup" class="btn btn-secondary">
+      <a href="https://app.spentiva.com/signup" class="inline-flex items-center px-6 py-3 bg-white text-primary-400 font-semibold rounded-lg hover:bg-gray-50 transform hover:scale-105 transition-all shadow-lg">
         <i class="fas fa-rocket mr-2"></i>
         Start Your Free Trial
       </a>

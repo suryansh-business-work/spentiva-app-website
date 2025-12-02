@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.scss";
 
 const features = [
   {
@@ -137,38 +136,45 @@ const faqs = [
     class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 text-white overflow-hidden"
   >
     <div class="absolute inset-0 bg-black opacity-10"></div>
-    <div class="container-custom section-padding relative z-10">
+    <div
+      class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16 sm:py-20 lg:py-24 relative z-10"
+    >
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="observe-animation">
+        <div
+          class="opacity-0 translate-y-4 transition-all duration-700 ease-out"
+        >
           <h1
             class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
             Smart Expense Tracking Powered by AI
           </h1>
-          <p class="text-xl mb-8 text-blue-100">
+          <p class="text-xl mb-8 text-primary-50">
             Track, analyze, and optimize your spending with intelligent
             insights. Connect via WhatsApp and never miss an expense.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a
               href="https://app.spentiva.com/signup"
-              class="btn btn-secondary text-center"
+              class="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-400 font-semibold rounded-lg hover:bg-gray-50 transform hover:scale-105 transition-all shadow-lg"
             >
               <i class="fas fa-rocket mr-2"></i>
               Get Started Free
             </a>
-            <a href="#features" class="btn btn-outline text-center">
+            <a
+              href="#features"
+              class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-400 transform hover:scale-105 transition-all"
+            >
               <i class="fas fa-play-circle mr-2"></i>
               Learn More
             </a>
           </div>
           <div class="mt-8 flex items-center space-x-6 text-sm">
             <div class="flex items-center">
-              <i class="fas fa-check-circle mr-2 text-green-300"></i>
+              <i class="fas fa-check-circle mr-2 text-success"></i>
               <span>No credit card required</span>
             </div>
             <div class="flex items-center">
-              <i class="fas fa-check-circle mr-2 text-green-300"></i>
+              <i class="fas fa-check-circle mr-2 text-success"></i>
               <span>Free forever plan</span>
             </div>
           </div>
@@ -176,7 +182,7 @@ const faqs = [
         <div class="observe-animation hidden lg:block">
           <div class="relative animate-float">
             <div
-              class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl blur-3xl opacity-50"
+              class="absolute inset-0 bg-gradient-to-r from-primary-300 to-accent-300 rounded-2xl blur-3xl opacity-50"
             >
             </div>
             <div class="relative bg-white rounded-2xl shadow-2xl p-8">
@@ -197,13 +203,13 @@ const faqs = [
                   class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg"
                 >
                   <div class="flex items-center space-x-3">
-                    <i class="fas fa-coffee text-blue-600 text-xl"></i>
+                    <i class="fas fa-coffee text-primary-400 text-xl"></i>
                     <div>
                       <p class="font-semibold text-gray-900">Coffee</p>
                       <p class="text-sm text-gray-600">Starbucks</p>
                     </div>
                   </div>
-                  <span class="font-bold text-blue-600">-$5.75</span>
+                  <span class="font-bold text-primary-400">-$5.75</span>
                 </div>
                 <div
                   class="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg"
@@ -226,11 +232,13 @@ const faqs = [
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="section-padding bg-white">
-    <div class="container-custom">
+  <section id="features" class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">Powerful Features</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Powerful Features
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Everything you need to take control of your finances
         </p>
       </div>
@@ -238,10 +246,10 @@ const faqs = [
         {
           features.map((feature, index) => (
             <div
-              class="card observe-animation"
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow opacity-0 translate-y-4 transition-all duration-700 ease-out"
               style={`animation-delay: ${index * 0.1}s`}
             >
-              <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+              <div class="w-14 h-14 bg-gradient-to-br from-primary-300 via-primary-400 to-accent-400 rounded-lg flex items-center justify-center mb-4">
                 <i class={`${feature.icon} text-white text-2xl`} />
               </div>
               <h3 class="text-xl font-bold text-gray-900 mb-3">
@@ -256,11 +264,13 @@ const faqs = [
   </section>
 
   <!-- How It Works Section -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-custom">
+  <section class="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          How It Works
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Get started in minutes with our simple 4-step process
         </p>
       </div>
@@ -272,10 +282,10 @@ const faqs = [
               style={`animation-delay: ${index * 0.1}s`}
             >
               <div class="relative mb-6">
-                <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+                <div class="w-20 h-20 bg-gradient-to-br from-primary-300 via-primary-400 to-accent-400 rounded-full flex items-center justify-center mx-auto shadow-xl">
                   <i class={`${step.icon} text-white text-3xl`} />
                 </div>
-                <div class="absolute -top-2 -right-2 w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                <div class="absolute -top-2 -right-2 w-8 h-8 bg-accent-400 text-white rounded-full flex items-center justify-center font-bold">
                   {step.step}
                 </div>
               </div>
@@ -289,11 +299,13 @@ const faqs = [
   </section>
 
   <!-- Testimonials Section -->
-  <section class="section-padding bg-white">
-    <div class="container-custom">
+  <section class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">What Our Users Say</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          What Our Users Say
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Join thousands of satisfied users managing their finances smarter
         </p>
       </div>
@@ -301,7 +313,7 @@ const faqs = [
         {
           testimonials.map((testimonial, index) => (
             <div
-              class="card observe-animation"
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow opacity-0 translate-y-4 transition-all duration-700 ease-out"
               style={`animation-delay: ${index * 0.1}s`}
             >
               <div class="flex items-center mb-4">
@@ -331,11 +343,13 @@ const faqs = [
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="section-padding bg-gray-50">
-    <div class="container-custom">
+  <section id="faq" class="py-16 sm:py-20 lg:py-24 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div class="text-center mb-16 observe-animation">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Everything you need to know about Spentiva
         </p>
       </div>
@@ -347,7 +361,7 @@ const faqs = [
               style={`animation-delay: ${index * 0.05}s`}
             >
               <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-start">
-                <i class="fas fa-question-circle text-blue-600 mr-3 mt-1" />
+                <i class="fas fa-question-circle text-primary-400 mr-3 mt-1" />
                 {faq.question}
               </h3>
               <p class="text-gray-600 ml-8">{faq.answer}</p>
@@ -360,31 +374,35 @@ const faqs = [
 
   <!-- CTA Section -->
   <section
-    class="section-padding bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+    class="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 text-white"
   >
-    <div class="container-custom text-center observe-animation">
+    <div
+      class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl text-center observe-animation"
+    >
       <h2 class="text-4xl md:text-5xl font-bold mb-6">
         Ready to Take Control of Your Finances?
       </h2>
-      <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+      <p class="text-xl mb-8 text-primary-50 max-w-2xl mx-auto">
         Join thousands of users who are already saving money and making smarter
         financial decisions with Spentiva.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="https://app.spentiva.com/signup"
-          class="btn btn-secondary text-center"
+          class="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-400 font-semibold rounded-lg hover:bg-gray-50 transform hover:scale-105 transition-all shadow-lg"
         >
           <i class="fas fa-rocket mr-2"></i>
           Start Free Trial
         </a>
-        <a href="/pricing" class="btn btn-outline text-center">
+        <a
+          href="/pricing"
+          class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-400 transform hover:scale-105 transition-all"
+        >
           <i class="fas fa-tag mr-2"></i>
           View Pricing
         </a>
       </div>
     </div>
   </section>
-
   <Footer />
 </BaseLayout>

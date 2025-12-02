@@ -13,10 +13,10 @@
   "dependencies": {
     "@astrojs/node": "^9.3.0",
     "@astrojs/vercel": "^9.0.1",
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.10.1",
     "sass": "^1.69.5",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
