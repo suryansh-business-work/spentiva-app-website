@@ -41,9 +41,12 @@ website/
 │   │   ├── about.astro        # About page
 │   │   ├── pricing.astro      # Pricing page
 │   │   ├── contact.astro      # Contact page
+│   │   ├── upcoming-features.astro # Upcoming features
+│   │   ├── use-cases.astro    # Use cases
 │   │   ├── privacy-policy.astro
 │   │   ├── terms-and-conditions.astro
 │   │   ├── data-policy.astro
+│   │   ├── cookie-policy.astro
 │   │   └── blog/
 │   │       ├── index.astro    # Blog listing
 │   │       └── [slug].astro   # Blog post template
@@ -67,10 +70,13 @@ website/
 - **About** (`/about`) - Company story, team, values
 - **Pricing** (`/pricing`) - Plans, comparison, FAQ
 - **Contact** (`/contact`) - Contact form, info
+- **Upcoming Features** (`/upcoming-features`) - Roadmap and future plans
+- **Use Cases** (`/use-cases`) - Scenarios and applications
 - **Blog** (`/blog`) - Article listings and posts
 - **Privacy Policy** (`/privacy-policy`)
 - **Terms & Conditions** (`/terms-and-conditions`)
 - **Data Policy** (`/data-policy`)
+- **Cookie Policy** (`/cookie-policy`)
 
 ## 🎯 Features
 
