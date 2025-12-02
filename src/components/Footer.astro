@@ -1,4 +1,6 @@
 ---
+import Newsletter from "./Newsletter.astro";
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = {
@@ -18,6 +20,7 @@ const footerLinks = {
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms & Conditions", href: "/terms-and-conditions" },
     { name: "Data Policy", href: "/data-policy" },
+    { name: "Cookie Policy", href: "/cookie-policy" },
   ],
 };
 
@@ -54,45 +57,7 @@ const socialLinks = [
   role="contentinfo"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-    <!-- Newsletter Section -->
-    <div class="mb-16 fade-in-up">
-      <div
-        class="relative rounded-3xl p-8 md:p-12 overflow-hidden"
-        style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"
-      >
-        <div class="relative z-10 max-w-3xl mx-auto text-center">
-          <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">
-            Subscribe to Our Newsletter
-          </h2>
-          <p class="text-white/90 mb-8 text-base md:text-lg">
-            Get the latest financial tips, news, and updates delivered straight
-            to your inbox.
-          </p>
-          <form
-            class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
-            aria-label="Newsletter subscription form"
-          >
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              required
-              class="flex-1 px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white focus:ring-2 focus:ring-white/50 transition-all"
-              aria-label="Email address for newsletter"
-            />
-            <button
-              type="submit"
-              class="cursor-pointer px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-              aria-label="Subscribe to newsletter"
-            >
-              Subscribe
-            </button>
-          </form>
-          <p class="text-white/70 text-sm mt-4">
-            No spam, ever. Unsubscribe at any time.
-          </p>
-        </div>
-      </div>
-    </div>
+    <Newsletter />
 
     <!-- Footer Links -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
@@ -241,13 +206,13 @@ const socialLinks = [
             href="/terms-and-conditions"
             class="cursor-pointer hover:text-primary-400 transition-colors"
             aria-label="Terms and Conditions">Terms</a
-          >
-          <a
-            href="/data-policy"
-            class="cursor-pointer hover:text-primary-400 transition-colors"
-            aria-label="Data Policy">Data Policy</a
-          >
+          >Data Policy
         </div>
+        <a
+          href="/cookie-policy"
+          class="cursor-pointer hover:text-primary-400 transition-colors"
+          aria-label="Cookie Policy">Cookies</a
+        >
       </div>
     </div>
   </div>

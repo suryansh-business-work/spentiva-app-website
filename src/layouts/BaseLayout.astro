@@ -1,5 +1,6 @@
 ---
 import "../styles/tailwind.css";
+import CookieConsent from "../components/ui/CookieConsent.astro";
 
 interface Props {
   title: string;
@@ -127,6 +128,9 @@ const structuredData = {
       Skip to main content
     </a>
     <slot />
+
+    <!-- Cookie Consent Banner -->
+    <CookieConsent />
 
     <script is:inline>
       // Mobile menu toggle with aria-expanded

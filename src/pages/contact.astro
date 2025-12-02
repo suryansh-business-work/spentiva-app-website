@@ -2,6 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Input from "../components/forms/Input.astro";
+import Select from "../components/forms/Select.astro";
+import Textarea from "../components/forms/Textarea.astro";
+import Checkbox from "../components/forms/Checkbox.astro";
+import Button from "../components/forms/Button.astro";
+import Alert from "../components/ui/Alert.astro";
 
 const contactInfo = [
   {
@@ -16,6 +22,13 @@ const contactInfo = [
     content: "Our team is distributed worldwide",
     link: "#",
   },
+];
+
+const subjectOptions = [
+  { value: "support", label: "Technical Support" },
+  { value: "billing", label: "Billing & Subscription" },
+  { value: "partnership", label: "Partnership Inquiry" },
+  { value: "other", label: "Other" },
 ];
 ---
 
@@ -119,94 +132,71 @@ const contactInfo = [
             <h2 class="text-2xl font-bold text-text-primary mb-6">
               Send us a Message
             </h2>
-            <form class="space-y-6">
+
+            <form class="space-y-6" id="contact-form">
               <div class="grid md:grid-cols-2 gap-6">
-                <div class="form-group">
-                  <label for="firstName" class="form-label">First Name</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    class="form-input"
-                    placeholder="John"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="lastName" class="form-label">Last Name</label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    class="form-input"
-                    placeholder="Doe"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="john@example.com"
+                <Input
+                  name="firstName"
+                  label="First Name"
+                  placeholder="John"
+                  required
+                />
+                <Input
+                  name="lastName"
+                  label="Last Name"
+                  placeholder="Doe"
                   required
                 />
               </div>
 
-              <div class="form-group">
-                <label for="subject" class="form-label">Subject</label>
-                <select id="subject" name="subject" class="form-input">
-                  <option value="">Select a topic</option>
-                  <option value="support">Technical Support</option>
-                  <option value="billing">Billing & Subscription</option>
-                  <option value="partnership">Partnership Inquiry</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+              <Input
+                type="email"
+                name="email"
+                label="Email Address"
+                placeholder="john@example.com"
+                required
+              />
 
-              <div class="form-group">
-                <label for="message" class="form-label">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  class="form-input"
-                  placeholder="How can we help you?"
-                  required></textarea>
-              </div>
+              <Select
+                name="subject"
+                label="Subject"
+                options={subjectOptions}
+                placeholder="Select a topic"
+              />
 
-              <div class="flex items-center">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  name="privacy"
-                  class="form-checkbox"
-                  required
-                />
-                <label for="privacy" class="ml-2 text-sm text-text-secondary">
-                  I agree to the <a
-                    href="/privacy-policy"
-                    class="cursor-pointer text-primary-400 hover:underline"
-                    >Privacy Policy</a
-                  > and <a
-                    href="/terms-and-conditions"
-                    class="cursor-pointer text-primary-400 hover:underline"
-                    >Terms of Service</a
-                  >.
-                </label>
-              </div>
+              <Textarea
+                name="message"
+                label="Message"
+                rows={5}
+                placeholder="How can we help you?"
+                required
+              />
 
-              <button
-                type="submit"
-                class="cursor-pointer w-full inline-flex items-center justify-center px-8 py-4 bg-primary-400 text-white font-semibold rounded-xl hover:bg-primary-500 transform hover:-translate-y-1 transition-all shadow-lg shadow-primary-400/25 text-base"
+              <Checkbox
+                name="privacy"
+                label="I agree to the Privacy Policy and Terms of Service."
+                required
               >
-                <i class="fas fa-paper-plane mr-2"></i>
+                I agree to the <a
+                  href="/privacy-policy"
+                  class="cursor-pointer text-primary-400 hover:underline"
+                  >Privacy Policy</a
+                > and <a
+                  href="/terms-and-conditions"
+                  class="cursor-pointer text-primary-400 hover:underline"
+                  >Terms of Service</a
+                >.
+              </Checkbox>
+
+              <Button
+                type="submit"
+                variant="primary"
+                fullWidth
+                icon="fas fa-paper-plane"
+                loading={false}
+              >
                 Send Message
-              </button>
+              </Button>
             </form>
           </div>
         </div>
@@ -216,3 +206,30 @@ const contactInfo = [
 
   <Footer />
 </BaseLayout>
+
+<script>
+  // Simple form handling for demonstration
+  const form = document.getElementById("contact-form");
+  const submitBtn = form?.querySelector(
+    'button[type="submit"]',
+  ) as HTMLButtonElement | null;
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Simulate loading state
+    if (submitBtn) {
+      const originalContent = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML =
+        '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+
+      setTimeout(() => {
+        alert("Message sent successfully! We will get back to you soon.");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalContent;
+        (form as HTMLFormElement).reset();
+      }, 1500);
+    }
+  });
+</script>
