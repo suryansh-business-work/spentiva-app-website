@@ -1,0 +1,265 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+type ColorKey = "blue" | "primary" | "purple" | "green" | "orange" | "pink";
+
+const useCases: Array<{
+  title: string;
+  icon: string;
+  description: string;
+  benefits: string[];
+  color: ColorKey;
+}> = [
+  {
+    title: "Freelancers & Contractors",
+    icon: "fas fa-laptop-code",
+    description:
+      "Track project expenses, client invoices, and tax deductions all in one place.",
+    benefits: [
+      "Separate business and personal expenses",
+      "Track income and expenses by client",
+      "Generate reports for tax season",
+      "Monitor profit margins on projects",
+    ],
+    color: "blue",
+  },
+  {
+    title: "Small Business Owners",
+    icon: "fas fa-store",
+    description:
+      "Manage business finances with multiple expense trackers for different departments or locations.",
+    benefits: [
+      "Track team expenses with approval workflows",
+      "Monitor cash flow in real-time",
+      "Categorize expenses by department",
+      "Export data for accounting software",
+    ],
+    color: "primary",
+  },
+  {
+    title: "Students",
+    icon: "fas fa-graduation-cap",
+    description:
+      "Stay on budget while in school with smart expense tracking and savings insights.",
+    benefits: [
+      "Track textbooks, meals, and living expenses",
+      "Set monthly budgets for different categories",
+      "Identify areas to cut costs",
+      "Save money for future goals",
+    ],
+    color: "purple",
+  },
+  {
+    title: "Families",
+    icon: "fas fa-home",
+    description:
+      "Collaborate with family members to manage household expenses and savings goals.",
+    benefits: [
+      "Share expense trackers with family members",
+      "Track groceries, utilities, and subscriptions",
+      "Plan for major purchases together",
+      "Teach kids money management",
+    ],
+    color: "green",
+  },
+  {
+    title: "Travelers",
+    icon: "fas fa-plane",
+    description:
+      "Keep track of trip expenses across multiple currencies and stay within budget.",
+    benefits: [
+      "Log expenses in different currencies",
+      "Track spending by trip or destination",
+      "Monitor daily budget limits",
+      "Generate trip expense reports",
+    ],
+    color: "orange",
+  },
+  {
+    title: "Budget-Conscious Individuals",
+    icon: "fas fa-piggy-bank",
+    description:
+      "Take control of personal finances and achieve your savings goals with AI insights.",
+    benefits: [
+      "Identify unnecessary subscriptions",
+      "Get personalized saving recommendations",
+      "Track progress toward financial goals",
+      "Reduce impulse spending",
+    ],
+    color: "pink",
+  },
+];
+
+const colorClasses = {
+  blue: "bg-blue-100 text-blue-600",
+  primary: "bg-primary-100 text-primary-600",
+  purple: "bg-purple-100 text-purple-600",
+  green: "bg-green-100 text-green-600",
+  orange: "bg-orange-100 text-orange-600",
+  pink: "bg-pink-100 text-pink-600",
+};
+---
+
+<BaseLayout
+  title="Use Cases - Spentiva by Exyconn"
+  description="Discover how Spentiva helps freelancers, businesses, students, families, and travelers manage their finances better."
+>
+  <Header />
+
+  <!-- Hero Section -->
+  <section
+    class="relative bg-primary-50 pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+      <div
+        class="max-w-4xl mx-auto text-center translate-y-4 transition-all duration-700 ease-out"
+      >
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary tracking-tight"
+        >
+          Spentiva for Everyone
+        </h1>
+        <p
+          class="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed"
+        >
+          Whether you're a freelancer, student, family, or business owner,
+          Spentiva adapts to your unique financial needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Cards -->
+  <section class="py-16 sm:py-20 lg:py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          useCases.map((useCase, index) => (
+            <div
+              class="bg-background-base rounded-2xl border border-border-light p-8 hover:border-primary-200 hover:shadow-xl transition-all duration-300 group"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <div
+                class={`w-16 h-16 ${colorClasses[useCase.color]} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+              >
+                <i class={`${useCase.icon} text-3xl`} />
+              </div>
+              <h3 class="text-2xl font-bold text-text-primary mb-4">
+                {useCase.title}
+              </h3>
+              <p class="text-text-secondary mb-6 leading-relaxed">
+                {useCase.description}
+              </p>
+              <ul class="space-y-3">
+                {useCase.benefits.map((benefit) => (
+                  <li class="flex items-start text-sm text-text-primary">
+                    <i class="fas fa-check-circle text-success mt-1 mr-3 flex-shrink-0" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Helps Section -->
+  <section
+    class="py-16 sm:py-20 lg:py-24 bg-background-surfaceAlt border-y border-border-light"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="text-center mb-16 max-w-3xl mx-auto">
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-text-primary mb-4 tracking-tight"
+        >
+          Why Spentiva Works for You
+        </h2>
+        <p class="text-lg sm:text-xl text-text-secondary">
+          Flexible features that adapt to any financial situation
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-xl border border-border-light p-8 text-center hover:shadow-lg transition-shadow"
+        >
+          <div
+            class="w-14 h-14 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i class="fas fa-rocket text-2xl text-primary-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-3">
+            Easy to Start
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            No complex setup required. Create an account and start tracking
+            expenses in minutes.
+          </p>
+        </div>
+        <div
+          class="bg-white rounded-xl border border-border-light p-8 text-center hover:shadow-lg transition-shadow"
+        >
+          <div
+            class="w-14 h-14 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i class="fas fa-cogs text-2xl text-primary-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-3">
+            Highly Customizable
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Create custom categories, set budgets, and organize trackers to fit
+            your workflow.
+          </p>
+        </div>
+        <div
+          class="bg-white rounded-xl border border-border-light p-8 text-center hover:shadow-lg transition-shadow"
+        >
+          <div
+            class="w-14 h-14 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <i class="fas fa-brain text-2xl text-primary-400"></i>
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-3">
+            AI-Powered Insights
+          </h3>
+          <p class="text-text-secondary leading-relaxed">
+            Get intelligent recommendations tailored to your spending patterns
+            and goals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 sm:py-20 lg:py-24 bg-primary-50 border-t border-border-light"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl text-center">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-text-primary tracking-tight"
+      >
+        Ready to Get Started?
+      </h2>
+      <p
+        class="text-xl mb-10 text-text-secondary max-w-2xl mx-auto leading-relaxed"
+      >
+        Join thousands of users who are managing their finances smarter with
+        Spentiva.
+      </p>
+      <a
+        href="https://app.spentiva.com/signup"
+        class="cursor-pointer inline-flex items-center justify-center px-8 py-4 bg-primary-400 text-white font-semibold rounded-xl hover:bg-primary-500 transform hover:-translate-y-1 transition-all shadow-lg shadow-primary-400/25 text-base"
+      >
+        <i class="fas fa-rocket mr-2"></i>
+        Get Started Free
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

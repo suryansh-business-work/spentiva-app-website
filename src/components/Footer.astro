@@ -5,11 +5,13 @@ const footerLinks = {
   product: [
     { name: "Features", href: "/#features" },
     { name: "Pricing", href: "/pricing" },
+    { name: "Use Cases", href: "/use-cases" },
     { name: "FAQ", href: "/#faq" },
   ],
-  company: [
-    { name: "About Us", href: "/about" },
+  resources: [
+    { name: "Upcoming Features", href: "/upcoming-features" },
     { name: "Blog", href: "/blog" },
+    { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
@@ -20,30 +22,101 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: "Facebook", icon: "fab fa-facebook", href: "#" },
-  { name: "Twitter", icon: "fab fa-twitter", href: "#" },
-  { name: "LinkedIn", icon: "fab fa-linkedin", href: "#" },
-  { name: "Instagram", icon: "fab fa-instagram", href: "#" },
+  {
+    name: "Facebook",
+    icon: "fab fa-facebook",
+    href: "#",
+    label: "Visit our Facebook page",
+  },
+  {
+    name: "Twitter",
+    icon: "fab fa-twitter",
+    href: "#",
+    label: "Follow us on Twitter",
+  },
+  {
+    name: "LinkedIn",
+    icon: "fab fa-linkedin",
+    href: "#",
+    label: "Connect on LinkedIn",
+  },
+  {
+    name: "Instagram",
+    icon: "fab fa-instagram",
+    href: "#",
+    label: "Follow us on Instagram",
+  },
 ];
 ---
 
-<footer class="bg-white border-t border-border-light pt-16 pb-8">
+<footer
+  class="bg-white border-t border-border-light pt-16 pb-8"
+  role="contentinfo"
+>
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <!-- Newsletter Section -->
+    <div class="mb-16 fade-in-up">
+      <div
+        class="relative rounded-3xl p-8 md:p-12 overflow-hidden"
+        style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"
+      >
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">
+            Subscribe to Our Newsletter
+          </h2>
+          <p class="text-white/90 mb-8 text-base md:text-lg">
+            Get the latest financial tips, news, and updates delivered straight
+            to your inbox.
+          </p>
+          <form
+            class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+            aria-label="Newsletter subscription form"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              required
+              class="flex-1 px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white placeholder-white/70 focus:outline-none focus:border-white focus:ring-2 focus:ring-white/50 transition-all"
+              aria-label="Email address for newsletter"
+            />
+            <button
+              type="submit"
+              class="cursor-pointer px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              aria-label="Subscribe to newsletter"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p class="text-white/70 text-sm mt-4">
+            No spam, ever. Unsubscribe at any time.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Links -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
       <!-- Brand Section -->
       <div class="lg:col-span-2">
         <div class="flex items-center space-x-2 mb-6">
           <div
-            class="w-10 h-10 bg-primary-400 rounded-xl flex items-center justify-center shadow-lg shadow-primary-400/20"
+            class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center"
           >
-            <i class="fas fa-wallet text-white text-xl"></i>
+            <img
+              src="/logo.svg"
+              alt="Spentiva Logo"
+              class="w-full h-full filter drop-shadow-sm"
+              width="48"
+              height="48"
+            />
           </div>
           <div class="flex flex-col">
-            <span class="font-bold text-xl text-text-primary tracking-tight"
+            <span
+              class="font-bold text-lg md:text-xl text-text-primary tracking-tight"
               >Spentiva</span
             >
             <span
-              class="text-[10px] uppercase tracking-wider text-text-secondary font-medium"
+              class="text-[9px] md:text-[10px] tracking-wider text-text-secondary font-medium uppercase"
               >By Exyconn</span
             >
           </div>
@@ -52,15 +125,37 @@ const socialLinks = [
           AI-powered expense tracking made simple. Track, analyze, and optimize
           your spending with intelligent insights.
         </p>
+
+        <!-- Auth Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mb-8">
+          <a
+            href="https://app.spentiva.com/login"
+            class="cursor-pointer inline-flex items-center justify-center px-6 py-3 border-2 border-primary-400 text-primary-400 font-semibold rounded-lg hover:bg-primary-50 transition-all duration-300 text-sm hover:scale-105"
+            aria-label="Log in to your account"
+          >
+            <i class="fas fa-sign-in-alt mr-2" aria-hidden="true"></i>
+            Log in
+          </a>
+          <a
+            href="https://app.spentiva.com/signup"
+            class="cursor-pointer inline-flex items-center justify-center px-6 py-3 bg-primary-400 text-white font-semibold rounded-lg hover:bg-primary-500 transition-all duration-300 shadow-lg shadow-primary-400/25 text-sm hover:scale-105"
+            aria-label="Sign up for free account"
+          >
+            <i class="fas fa-rocket mr-2" aria-hidden="true"></i>
+            Sign up Free
+          </a>
+        </div>
+
+        <!-- Social Links -->
         <div class="flex space-x-4">
           {
             socialLinks.map((social) => (
               <a
                 href={social.href}
-                class="w-10 h-10 bg-background-surfaceAlt rounded-lg flex items-center justify-center text-text-secondary hover:bg-primary-400 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
-                aria-label={social.name}
+                class="cursor-pointer w-10 h-10 bg-background-surfaceAlt rounded-lg flex items-center justify-center text-text-secondary hover:bg-primary-400 hover:text-white transition-all duration-300 transform hover:-translate-y-1 hover:scale-110"
+                aria-label={social.label}
               >
-                <i class={`${social.icon} text-lg`} />
+                <i class={`${social.icon} text-lg`} aria-hidden="true" />
               </a>
             ))
           }
@@ -70,13 +165,14 @@ const socialLinks = [
       <!-- Product Links -->
       <div>
         <h3 class="font-bold text-text-primary mb-6">Product</h3>
-        <ul class="space-y-4">
+        <ul class="space-y-4" role="list">
           {
             footerLinks.product.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-text-secondary hover:text-primary-400 transition-colors"
+                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  aria-label={link.name}
                 >
                   {link.name}
                 </a>
@@ -86,16 +182,17 @@ const socialLinks = [
         </ul>
       </div>
 
-      <!-- Company Links -->
+      <!-- Resources Links -->
       <div>
-        <h3 class="font-bold text-text-primary mb-6">Company</h3>
-        <ul class="space-y-4">
+        <h3 class="font-bold text-text-primary mb-6">Resources</h3>
+        <ul class="space-y-4" role="list">
           {
-            footerLinks.company.map((link) => (
+            footerLinks.resources.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-text-secondary hover:text-primary-400 transition-colors"
+                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  aria-label={link.name}
                 >
                   {link.name}
                 </a>
@@ -108,13 +205,14 @@ const socialLinks = [
       <!-- Legal Links -->
       <div>
         <h3 class="font-bold text-text-primary mb-6">Legal</h3>
-        <ul class="space-y-4">
+        <ul class="space-y-4" role="list">
           {
             footerLinks.legal.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-text-secondary hover:text-primary-400 transition-colors"
+                  class="cursor-pointer text-text-secondary hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+                  aria-label={link.name}
                 >
                   {link.name}
                 </a>
@@ -136,19 +234,21 @@ const socialLinks = [
         <div class="flex items-center space-x-8 text-sm text-text-secondary">
           <a
             href="/privacy-policy"
-            class="hover:text-primary-400 transition-colors">Privacy</a
+            class="cursor-pointer hover:text-primary-400 transition-colors"
+            aria-label="Privacy Policy">Privacy</a
           >
           <a
             href="/terms-and-conditions"
-            class="hover:text-primary-400 transition-colors">Terms</a
+            class="cursor-pointer hover:text-primary-400 transition-colors"
+            aria-label="Terms and Conditions">Terms</a
           >
           <a
             href="/data-policy"
-            class="hover:text-primary-400 transition-colors">Data Policy</a
+            class="cursor-pointer hover:text-primary-400 transition-colors"
+            aria-label="Data Policy">Data Policy</a
           >
         </div>
       </div>
     </div>
   </div>
 </footer>
-```

@@ -6,13 +6,13 @@ import Footer from "../components/Footer.astro";
 const plans = [
   {
     name: "Free",
-    price: "$0",
-    period: "/month",
+    priceMonthly: { usd: 0, inr: 0, eur: 0 },
+    priceYearly: { usd: 0, inr: 0, eur: 0 },
     description: "Perfect for individuals just starting out.",
     features: [
       { text: "Manual Expense Tracking", included: true },
       { text: "Basic Reports", included: true },
-      { text: "WhatsApp Integration (Limited)", included: true },
+      { text: "Up to 3 Expense Trackers", included: true },
       { text: "1 Bank Account Link", included: true },
       { text: "AI Insights", included: false },
       { text: "Priority Support", included: false },
@@ -23,13 +23,13 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$9.99",
-    period: "/month",
+    priceMonthly: { usd: 9.99, inr: 799, eur: 8.99 },
+    priceYearly: { usd: 99, inr: 7990, eur: 89 },
     description: "For power users who want full control.",
     features: [
       { text: "Unlimited Expense Tracking", included: true },
       { text: "Advanced Analytics & Reports", included: true },
-      { text: "Unlimited WhatsApp Integration", included: true },
+      { text: "Export to CSV/PDF", included: true },
       { text: "Unlimited Bank Accounts", included: true },
       { text: "AI-Powered Insights", included: true },
       { text: "Priority Support", included: true },
@@ -40,8 +40,8 @@ const plans = [
   },
   {
     name: "Business",
-    price: "$29.99",
-    period: "/month",
+    priceMonthly: { usd: 29.99, inr: 2499, eur: 26.99 },
+    priceYearly: { usd: 299, inr: 24990, eur: 269 },
     description: "Ideal for small businesses and teams.",
     features: [
       { text: "Everything in Pro", included: true },
@@ -89,35 +89,97 @@ const faqs = [
 
   <!-- Hero Section -->
   <section
-    class="relative bg-primary-50 pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden"
+    class="relative bg-primary-50 pt-32 pb-20 lg:pt-40 lg:pb-16 overflow-hidden fade-in-up"
+    role="region"
+    aria-label="Pricing header"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-      <div
-        class="max-w-4xl mx-auto text-center translate-y-4 transition-all duration-700 ease-out"
-      >
+      <div class="max-w-4xl mx-auto text-center">
         <h1
           class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary tracking-tight"
         >
           Simple, Transparent Pricing
         </h1>
         <p
-          class="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed"
+          class="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-8"
         >
           Choose the plan that fits your financial journey. No hidden fees,
           cancel anytime.
         </p>
+
+        <!-- Billing Toggle & Currency Selector -->
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8"
+        >
+          <!-- Billing Period Toggle -->
+          <div
+            class="flex items-center gap-3 bg-white p-2 rounded-xl shadow-md"
+            role="group"
+            aria-label="Billing period selector"
+          >
+            <button
+              id="monthly-btn"
+              class="px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 bg-primary-400 text-white"
+              aria-pressed="true"
+              aria-label="Select monthly billing"
+            >
+              Monthly
+            </button>
+            <button
+              id="yearly-btn"
+              class="px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 text-text-secondary"
+              aria-pressed="false"
+              aria-label="Select yearly billing"
+            >
+              Yearly
+              <span
+                class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full"
+                >Save 17%</span
+              >
+            </button>
+          </div>
+
+          <!-- Currency Selector -->
+          <div class="flex items-center gap-2">
+            <label
+              for="currency-select"
+              class="text-sm font-medium text-text-secondary">Currency:</label
+            >
+            <select
+              id="currency-select"
+              class="px-4 py-2.5 bg-white border-2 border-border-light rounded-lg font-semibold text-text-primary cursor-pointer hover:border-primary-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-400"
+              aria-label="Select currency"
+            >
+              <option value="usd">USD ($)</option>
+              <option value="inr">INR (₹)</option>
+              <option value="eur">EUR (€)</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Pricing Cards -->
   <section class="py-16 sm:py-20 lg:py-24 bg-white -mt-10 relative z-20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div
+      class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
+      id="pricing-container"
+    >
       <div class="grid md:grid-cols-3 gap-8">
         {
           plans.map((plan, index) => (
             <div
-              class={`relative bg-white rounded-2xl shadow-xl border ${plan.popular ? "border-primary-400 ring-4 ring-primary-400/10" : "border-border-light"} p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full`}
+              class={`pricing-card relative bg-white rounded-2xl shadow-xl border ${plan.popular ? "border-primary-400 ring-4 ring-primary-400/10" : "border-border-light"} p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full fade-in-up`}
+              data-plan={plan.name.toLowerCase()}
+              data-monthly-usd={plan.priceMonthly.usd}
+              data-monthly-inr={plan.priceMonthly.inr}
+              data-monthly-eur={plan.priceMonthly.eur}
+              data-yearly-usd={plan.priceYearly.usd}
+              data-yearly-inr={plan.priceYearly.inr}
+              data-yearly-eur={plan.priceYearly.eur}
+              role="article"
+              aria-label={`${plan.name} plan`}
             >
               {plan.popular && (
                 <div class="absolute top-0 right-0 bg-primary-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-wider">
@@ -132,18 +194,24 @@ const faqs = [
                   {plan.description}
                 </p>
                 <div class="flex items-baseline">
-                  <span class="text-4xl font-bold text-text-primary">
-                    {plan.price}
+                  <span class="price-symbol text-2xl font-bold text-text-primary">
+                    $
                   </span>
-                  <span class="text-text-secondary ml-1">{plan.period}</span>
+                  <span class="price-amount text-4xl font-bold text-text-primary">
+                    {plan.priceMonthly.usd}
+                  </span>
+                  <span class="price-period text-text-secondary ml-1">
+                    /month
+                  </span>
                 </div>
               </div>
 
-              <ul class="space-y-4 mb-8 flex-grow">
+              <ul class="space-y-4 mb-8 flex-grow" role="list">
                 {plan.features.map((feature) => (
                   <li class="flex items-start">
                     <i
                       class={`fas ${feature.included ? "fa-check-circle text-success" : "fa-times-circle text-border-dark"} mt-1 mr-3 text-lg`}
+                      aria-hidden="true"
                     />
                     <span
                       class={`text-sm ${feature.included ? "text-text-primary" : "text-text-placeholder"}`}
@@ -156,11 +224,12 @@ const faqs = [
 
               <a
                 href={plan.ctaLink}
-                class={`w-full text-center inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl transform hover:-translate-y-1 transition-all shadow-lg text-base ${
+                class={`cursor-pointer w-full text-center inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 shadow-lg text-base ${
                   plan.popular
                     ? "bg-primary-400 text-white hover:bg-primary-500 shadow-primary-400/25"
                     : "bg-background-surfaceAlt text-primary-400 hover:bg-primary-50 border border-transparent hover:border-primary-200"
                 }`}
+                aria-label={`${plan.cta} for ${plan.name} plan`}
               >
                 {plan.cta}
               </a>
@@ -168,121 +237,134 @@ const faqs = [
           ))
         }
       </div>
-      <tbody class="divide-y divide-gray-200">
-        <tr>
-          <td class="py-4 px-6 text-gray-700">Number of Trackers</td>
-          <td class="text-center py-4 px-6">1</td>
-          <td class="text-center py-4 px-6 bg-primary-50">5</td>
-          <td class="text-center py-4 px-6">Unlimited</td>
-        </tr>
-        <tr>
-          <td class="py-4 px-6 text-gray-700">Expenses per Month</td>
-          <td class="text-center py-4 px-6">100</td>
-          <td class="text-center py-4 px-6 bg-primary-50">Unlimited</td>
-          <td class="text-center py-4 px-6">Unlimited</td>
-        </tr>
-        <tr>
-          <td class="py-4 px-6 text-gray-700">AI Categorization</td>
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-          <td class="text-center py-4 px-6 bg-primary-50"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-        </tr>
-        <tr>
-          <td class="py-4 px-6 text-gray-700">Advanced Analytics</td>
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-times text-gray-300"></i></td
-          >
-          <td class="text-center py-4 px-6 bg-primary-50"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-        </tr>
-        <tr>
-          <td class="py-4 px-6 text-gray-700">Team Collaboration</td>
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-times text-gray-300"></i></td
-          >
-          <td class="text-center py-4 px-6 bg-primary-50"
-            ><i class="fas fa-times text-gray-300"></i></td
-          >
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-        </tr>
-        <tr>
-          <td class="py-4 px-6 text-gray-700">Priority Support</td>
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-times text-gray-300"></i></td
-          >
-          <td class="text-center py-4 px-6 bg-primary-50"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-          <td class="text-center py-4 px-6"
-            ><i class="fas fa-check text-green-500"></i></td
-          >
-        </tr>
-      </tbody>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section
+    class="py-16 sm:py-20 lg:py-24 bg-gray-50 fade-in-up"
+    role="region"
+    aria-label="Frequently asked questions"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Pricing FAQs
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          Common questions about our pricing plans
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {
+          faqs.map((faq, index) => (
+            <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+              <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-start">
+                <i
+                  class="fas fa-question-circle text-primary-400 mr-3 mt-1"
+                  aria-hidden="true"
+                />
+                {faq.question}
+              </h3>
+              <p class="text-gray-600 ml-8">{faq.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section
+    class="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 text-white fade-in-up"
+    role="region"
+    aria-label="Call to action"
+  >
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+      <p class="text-xl mb-8 text-primary-50 max-w-2xl mx-auto">
+        Join thousands of users managing their expenses smarter with Spentiva.
+      </p>
+      <a
+        href="https://app.spentiva.com/signup"
+        class="cursor-pointer inline-flex items-center px-8 py-4 bg-white text-primary-400 font-semibold rounded-lg hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg"
+        aria-label="Start your free trial"
+      >
+        <i class="fas fa-rocket mr-2" aria-hidden="true"></i>
+        Start Your Free Trial
+      </a>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>
 
-<!-- FAQ Section -->
-<section class="py-16 sm:py-20 lg:py-24 bg-gray-50">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16 observe-animation">
-      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-        Pricing FAQs
-      </h2>
-      <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-        Common questions about our pricing plans
-      </p>
-    </div>
-    <div class="max-w-3xl mx-auto space-y-4">
-      {
-        faqs.map((faq, index) => (
-          <div
-            class="bg-white rounded-xl shadow-md p-6 observe-animation"
-            style={`animation-delay: ${index * 0.05}s`}
-          >
-            <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-start">
-              <i class="fas fa-question-circle text-primary-400 mr-3 mt-1" />
-              {faq.question}
-            </h3>
-            <p class="text-gray-600 ml-8">{faq.answer}</p>
-          </div>
-        ))
+<script>
+  const monthlyBtn = document.getElementById("monthly-btn");
+  const yearlyBtn = document.getElementById("yearly-btn");
+  const currencySelect = document.getElementById(
+    "currency-select",
+  ) as HTMLSelectElement;
+  let billingPeriod = "monthly";
+  let currency = "usd";
+
+  const currencySymbols = {
+    usd: "$",
+    inr: "₹",
+    eur: "€",
+  };
+
+  function updatePrices() {
+    const cards = document.querySelectorAll(".pricing-card");
+
+    cards.forEach((card) => {
+      const monthlyPrice = parseFloat(
+        card.getAttribute(`data-monthly-${currency}`) || "0",
+      );
+      const yearlyPrice = parseFloat(
+        card.getAttribute(`data-yearly-${currency}`) || "0",
+      );
+
+      const price = billingPeriod === "monthly" ? monthlyPrice : yearlyPrice;
+      const period = billingPeriod === "monthly" ? "/month" : "/year";
+
+      const priceSymbol = card.querySelector(".price-symbol");
+      const priceAmount = card.querySelector(".price-amount");
+      const pricePeriod = card.querySelector(".price-period");
+
+      if (priceSymbol && priceAmount && pricePeriod) {
+        priceSymbol.textContent =
+          currencySymbols[currency as keyof typeof currencySymbols];
+        priceAmount.textContent = price.toLocaleString();
+        pricePeriod.textContent = period;
       }
-    </div>
-  </div>
-</section>
+    });
+  }
 
-<!-- CTA Section -->
-<section
-  class="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-primary-300 via-primary-400 to-accent-400 text-white"
->
-  <div
-    class="container mx-auto px-4 sm:px-6 lg:px-8 text-center observe-animation"
-  >
-    <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-    <p class="text-xl mb-8 text-primary-50 max-w-2xl mx-auto">
-      Join thousands of users managing their expenses smarter with Spentiva.
-    </p>
-    <a
-      href="https://app.spentiva.com/signup"
-      class="inline-flex items-center px-6 py-3 bg-white text-primary-400 font-semibold rounded-lg hover:bg-gray-50 transform hover:scale-105 transition-all shadow-lg"
-    >
-      <i class="fas fa-rocket mr-2"></i>
-      Start Your Free Trial
-    </a>
-  </div>
-</section>
+  monthlyBtn?.addEventListener("click", () => {
+    billingPeriod = "monthly";
+    monthlyBtn.classList.add("bg-primary-400", "text-white");
+    monthlyBtn.classList.remove("text-text-secondary");
+    yearlyBtn?.classList.remove("bg-primary-400", "text-white");
+    yearlyBtn?.classList.add("text-text-secondary");
+    monthlyBtn.setAttribute("aria-pressed", "true");
+    yearlyBtn?.setAttribute("aria-pressed", "false");
+    updatePrices();
+  });
 
-<Footer />
+  yearlyBtn?.addEventListener("click", () => {
+    billingPeriod = "yearly";
+    yearlyBtn.classList.add("bg-primary-400", "text-white");
+    yearlyBtn.classList.remove("text-text-secondary");
+    monthlyBtn?.classList.remove("bg-primary-400", "text-white");
+    monthlyBtn?.classList.add("text-text-secondary");
+    yearlyBtn.setAttribute("aria-pressed", "true");
+    monthlyBtn?.setAttribute("aria-pressed", "false");
+    updatePrices();
+  });
+
+  currencySelect?.addEventListener("change", (e) => {
+    currency = (e.target as HTMLSelectElement).value;
+    updatePrices();
+  });
+</script>

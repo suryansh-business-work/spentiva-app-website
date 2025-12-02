@@ -11,15 +11,9 @@ const contactInfo = [
     link: "mailto:support@spentiva.com",
   },
   {
-    icon: "fab fa-whatsapp",
-    title: "WhatsApp Support",
-    content: "+1 (555) 123-4567",
-    link: "https://wa.me/15551234567",
-  },
-  {
-    icon: "fas fa-map-marker-alt",
-    title: "Office",
-    content: "123 Tech Hub, Silicon Valley, CA 94025",
+    icon: "fas fa-globe",
+    title: "We Work Remotely",
+    content: "Our team is distributed worldwide",
     link: "#",
   },
 ];
@@ -69,7 +63,10 @@ const contactInfo = [
             <div class="space-y-6">
               {
                 contactInfo.map((item) => (
-                  <a href={item.link} class="flex items-start group">
+                  <a
+                    href={item.link}
+                    class="cursor-pointer flex items-start group"
+                  >
                     <div class="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary-100 transition-colors">
                       <i class={`${item.icon} text-primary-400`} />
                     </div>
@@ -193,17 +190,19 @@ const contactInfo = [
                 <label for="privacy" class="ml-2 text-sm text-text-secondary">
                   I agree to the <a
                     href="/privacy-policy"
-                    class="text-primary-400 hover:underline">Privacy Policy</a
+                    class="cursor-pointer text-primary-400 hover:underline"
+                    >Privacy Policy</a
                   > and <a
                     href="/terms-and-conditions"
-                    class="text-primary-400 hover:underline">Terms of Service</a
+                    class="cursor-pointer text-primary-400 hover:underline"
+                    >Terms of Service</a
                   >.
                 </label>
               </div>
 
               <button
                 type="submit"
-                class="w-full inline-flex items-center justify-center px-8 py-4 bg-primary-400 text-white font-semibold rounded-xl hover:bg-primary-500 transform hover:-translate-y-1 transition-all shadow-lg shadow-primary-400/25 text-base"
+                class="cursor-pointer w-full inline-flex items-center justify-center px-8 py-4 bg-primary-400 text-white font-semibold rounded-xl hover:bg-primary-500 transform hover:-translate-y-1 transition-all shadow-lg shadow-primary-400/25 text-base"
               >
                 <i class="fas fa-paper-plane mr-2"></i>
                 Send Message
